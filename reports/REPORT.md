@@ -171,11 +171,11 @@ Vì vậy lỗi còn lại đến từ cả hai phần:
 
 **4. Một chỗ bạn đúng và ReID sai (frame, ID, vì sao):**
 
-`...`
+Ở frame 107, object thuộc GT ID 5 nhưng BoT-SORT + ReID đã chuyển predicted ID từ 24 sang 28. Đến frame 110, tracker tiếp tục chuyển từ ID 28 sang ID 31. Trong khi đó, annotation của tôi vẫn giữ cùng object với ID 5 xuyên suốt. Đây là lỗi ID switch/association của ReID, vì một chiếc xe bị chia thành nhiều ID khác nhau.
 
 **5. Một chỗ ReID làm bạn xem lại annotation (frame, ID, vì sao), hoặc lý do evidence cho thấy model sai:**
 
-`...`
+Ở frame 140, GT ID 3 và predicted ID 3 vẫn khớp đúng object nhưng IoU chỉ đạt 0.518, rất gần ngưỡng 0.5. Tôi cần xem lại bounding box của mình ở frame này để kiểm tra box có quá rộng hoặc quá hẹp hay không. Tuy nhiên, vì ID vẫn được giữ đúng và IoU thấp, evidence hiện tại cho thấy lỗi chủ yếu nằm ở localization/bounding box của model hơn là lỗi ID tracking.
 
 ## 6. Nếu phải gán thêm 10 clip nữa
 
